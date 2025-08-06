@@ -16,7 +16,7 @@ export default defineConfig(
     // Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
     use: {
       baseURL: process.env.URL ? process.env.URL : "", //Base URL to use in actions (switch between production and testing from .env)
-      headless: true, // Headless run mode
+      headless: false, // Headless run mode
       trace: "on-first-retry", // Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer
     },
 

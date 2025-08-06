@@ -1,31 +1,12 @@
 import { test, expect } from "@playwright/test";
+import { TrelloLoginPage } from "../pages/LoginPage";
 
 test("Test trello incorrect login page", async ({ page }) => {
-  await test.step("Navigating to url", async () => {
-    await page.goto("/home");
-    await page
-      .getByTestId("bignav")
-      .getByRole("link", { name: "Log in" })
-      .click();
-    await expect(
-      page.getByRole("heading", { name: "Log in to continue" })
-    ).toBeVisible();
+  await page.goto("/login");
 
-    await test.step("Fill username & password", async () => {
-      await page.getByTestId("username").click();
-      await page.getByTestId("username").fill("example@domain.com");
-      await page.getByTestId("login-submit-idf-testid").click();
-      await page.getByTestId("password").fill("password");
-    });
+  const loginPage = new TrelloLoginPage(page);
 
-    await test.step("Submit login", async () => {
-      await page.getByTestId("login-submit-idf-testid").click();
-    });
-
-    await test.step("Check error message", async () => {
-      await expect(
-        page.getByText("You must change your password")
-      ).toBeVisible();
-    });
-  });
+  await loginPage.checkLoginPageHeader();
+  await loginPage.loginToTrello();
+  await loginPage.checkLoginError();
 });
