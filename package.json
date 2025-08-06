@@ -1,0 +1,18 @@
+{
+  "name": "playwright-automated-testing",
+  "version": "1.0.0",
+  "description": "Playwright is an open-source framework for cross-browser automation and end-to-end web application testing.",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@types/node": "^24.2.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "testable-playwright-test": "^0.1.7"
+  }
+}
