@@ -3,7 +3,9 @@ import { devices, defineConfig } from "@playwright/test";
 import dotenv from "dotenv";
 import path from "path";
 
-dotenv.config({ path: path.resolve(__dirname, ".env") });
+if (process.env.GITHUB_ACTIONS !== "true") {
+  dotenv.config({ path: path.resolve(__dirname, ".env") });
+}
 
 export default defineConfig(
   {
@@ -15,8 +17,8 @@ export default defineConfig(
     reporter: "html", // Reporter to use. See https://playwright.dev/docs/test-reporters
     // Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
     use: {
-      baseURL: process.env.CI ? process.env.URL : "", //Base URL to use in actions (switch between production and testing from .env)
-      headless: true, // Headless run mode
+      baseURL: process.env.URL, //Base URL to use in actions (switch between production and testing from .env)
+      headless: process.env.HEADLESS !== "false", // Headless run mode (false local / true ci)
       trace: "on-first-retry", // Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer
     },
 
