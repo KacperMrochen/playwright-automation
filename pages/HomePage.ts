@@ -4,6 +4,8 @@ export class TrelloHomePage {
   readonly page: Page;
   readonly logInLink: Locator;
   readonly gettingStartedHeader: Locator;
+  readonly signUpButton: Locator;
+  readonly signUpEmail: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -11,6 +13,10 @@ export class TrelloHomePage {
     this.gettingStartedHeader = page.locator("h1", {
       hasText: "Capture, organize, and tackle your to-dos from anywhere.",
     });
+    this.signUpButton = page.locator("button", {
+      hasText: "Sign up - it’s free!",
+    });
+    this.signUpEmail = page.getByPlaceholder("Email");
   }
 
   async checkHeaderText() {
@@ -19,5 +25,13 @@ export class TrelloHomePage {
 
   async clickLoginLink() {
     await this.logInLink.nth(0).click();
+  }
+
+  async fillSignUpEmail() {
+    await this.signUpEmail.nth(0).fill("example@domain.com");
+  }
+
+  async clickSignUpButton() {
+    await this.signUpButton.nth(0).click();
   }
 }
