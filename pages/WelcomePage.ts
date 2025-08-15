@@ -12,6 +12,6 @@ export class TrelloWelcomePage {
   }
 
   async checkPageHeading() {
-    expect(this.heading).toBeVisible();
+    await expect(this.heading).toBeVisible();
   }
 }
