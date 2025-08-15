@@ -14,7 +14,7 @@ test("Test trello home login link", async ({ page }) => {
 
   const loginPage = new TrelloLoginPage(page);
 
-  await loginPage.checkLoginPageHeader();
+  await loginPage.checkLoginPageHeading();
 });
 
 test("Test trello home sign-up link", async ({ page }) => {

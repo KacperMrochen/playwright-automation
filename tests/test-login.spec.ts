@@ -6,7 +6,7 @@ test("Test trello incorrect login page", async ({ page }) => {
 
   const loginPage = new TrelloLoginPage(page);
 
-  await loginPage.checkLoginPageHeader();
+  await loginPage.checkLoginPageHeading();
   await loginPage.loginToTrello();
   await loginPage.checkLoginError();
 });
