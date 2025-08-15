@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import { TrelloHomePage } from "../pages/HomePage";
 import { TrelloLoginPage } from "../pages/LoginPage";
 import { TrelloWelcomePage } from "../pages/WelcomePage";
+import { TrelloSignupPage } from "../pages/SignupPage";
 
 test("Test trello home login link", async ({ page }) => {
   await page.goto("/");
@@ -24,7 +25,8 @@ test("Test trello home sign-up link", async ({ page }) => {
   await homePage.fillSignUpEmail();
   await homePage.clickSignUpButton();
 
-  const welcomePage = new TrelloWelcomePage(page);
+  const signupPage = new TrelloSignupPage(page);
 
-  await welcomePage.checkPageHeading();
+  await signupPage.checkSignupPageHeading();
+  await signupPage.checkEmailInputValue();
 });

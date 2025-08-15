@@ -13,7 +13,7 @@ export class TrelloSignupPage {
     this.submitButton = page.getByRole("button", { name: "Sign up" });
   }
 
-  async checkSignupPageHeader() {
+  async checkSignupPageHeading() {
     await expect(this.heading).toBeVisible();
   }
 

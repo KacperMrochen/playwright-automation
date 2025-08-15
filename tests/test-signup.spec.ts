@@ -7,7 +7,7 @@ test("Test trello registered credentials signup page", async ({ page }) => {
 
   const signupPage = new TrelloSignupPage(page);
 
-  await signupPage.checkSignupPageHeader();
+  await signupPage.checkSignupPageHeading();
   await signupPage.signupToTrello();
 
   const loginPage = new TrelloLoginPage(page);
