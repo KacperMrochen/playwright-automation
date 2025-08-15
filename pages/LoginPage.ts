@@ -8,6 +8,7 @@ export class TrelloLoginPage {
   readonly continueButton: Locator;
   readonly submitButton: Locator;
   readonly errorMessage: Locator;
+  readonly accountRegisteredMessage: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -18,6 +19,9 @@ export class TrelloLoginPage {
     this.submitButton = page.getByRole("button", { name: "Log in" });
     this.errorMessage = page.getByText(
       "to log in. Your current password has appeared in an external data breach and your Atlassian account is at risk."
+    );
+    this.accountRegisteredMessage = page.getByText(
+      "It looks like you've already got an account associated with this email. Log in instead or reset your password if you've forgotten it"
     );
   }
 
@@ -34,5 +38,9 @@ export class TrelloLoginPage {
 
   async checkLoginError() {
     await expect(this.errorMessage).toBeVisible();
+  }
+
+  async checkAccountRegisteredMessage() {
+    await expect(this.accountRegisteredMessage).toBeVisible();
   }
 }
