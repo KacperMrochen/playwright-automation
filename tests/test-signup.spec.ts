@@ -1,11 +1,10 @@
 import { test, expect } from "@playwright/test";
+import { chromium } from "playwright-extra";
 import { TrelloSignupPage } from "../pages/SignupPage";
 import { TrelloLoginPage } from "../pages/LoginPage";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
 
-// const userAgent = "Mozilla/5.0 (platform; rv:17.0) Gecko/20100101 Firefox/17.0";
-
-test.use(StealthPlugin());
+chromium.use(StealthPlugin());
 
 test("Test trello registered credentials signup page", async ({ page }) => {
   await page.goto("/signup");
