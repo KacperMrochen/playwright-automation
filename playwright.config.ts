@@ -7,6 +7,16 @@ if (process.env.GITHUB_ACTIONS !== "true") {
   dotenv.config({ path: path.resolve(__dirname, ".env") });
 }
 
+const userAgents = [
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0",
+  "Mozilla/5.0 (X11; CrOS x86_64 14541.0.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36",
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3.1 Safari/605.1.15",
+];
+
+function useRandomUserAgent(list: string[]): string {
+  return list[Math.floor(Math.random() * list.length)];
+}
+
 export default defineConfig(
   {
     testDir: "./tests", // Tests dir
@@ -17,6 +27,8 @@ export default defineConfig(
     reporter: "html", // Reporter to use. See https://playwright.dev/docs/test-reporters
     // Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
     use: {
+      locale: "en-GB",
+      userAgent: useRandomUserAgent(userAgents),
       baseURL: process.env.URL, //Base URL to use in actions (switch between production and testing from .env)
       headless: process.env.HEADLESS !== "false", // Headless run mode (false local / true ci)
       trace: "on-first-retry", // Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer
