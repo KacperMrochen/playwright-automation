@@ -26,14 +26,14 @@ export default defineConfig(
     workers: process.env.CI ? 1 : undefined, // Opt out of parallel tests on CI.
     reporter: "html", // Reporter to use. See https://playwright.dev/docs/test-reporters
     // Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
+    // globalSetup: require.resolve("./global-setup"),
     use: {
       locale: "en-GB",
-      userAgent: useRandomUserAgent(userAgents),
+      // userAgent: useRandomUserAgent(userAgents),
       baseURL: process.env.URL, //Base URL to use in actions (switch between production and testing from .env)
       headless: process.env.HEADLESS !== "false", // Headless run mode (false local / true ci)
       trace: "on-first-retry", // Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer
     },
-    globalSetup: require.resolve("./global-setup"),
     // Configure projects for major browsers
     projects: [
       // {
