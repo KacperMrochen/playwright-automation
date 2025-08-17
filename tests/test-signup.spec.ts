@@ -12,8 +12,8 @@ test("Test trello registered credentials signup page", async ({ page }) => {
 
   // TODO: anti-bot bypass
 
-  // const loginPage = new TrelloLoginPage(page);
+  const loginPage = new TrelloLoginPage(page);
 
-  // await loginPage.checkLoginPageHeading();
-  // await loginPage.checkAccountRegisteredMessage();
+  await loginPage.checkLoginPageHeading();
+  await loginPage.checkAccountRegisteredMessage();
 });
