@@ -21,7 +21,7 @@ export default defineConfig(
       headless: process.env.HEADLESS !== "false", // Headless run mode (false local / true ci)
       trace: "on-first-retry", // Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer
     },
-
+    globalSetup: require.resolve("./global-setup"),
     // Configure projects for major browsers
     projects: [
       // {
