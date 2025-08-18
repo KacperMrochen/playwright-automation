@@ -29,10 +29,10 @@ export class TrelloLoginPage {
     await expect(this.heading).toBeVisible({ timeout: 10000 });
   }
 
-  async loginToTrello() {
-    await this.emailInput.fill("example@domain.com");
+  async loginToTrello(login: string, password: string) {
+    await this.emailInput.fill(login);
     await this.continueButton.click();
-    await this.passwordInput.fill("password");
+    await this.passwordInput.fill(password);
     await this.submitButton.click();
   }
 
