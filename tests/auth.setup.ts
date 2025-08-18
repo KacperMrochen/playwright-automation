@@ -14,8 +14,8 @@ setup("Authenticate user", async ({ page }) => {
   const loginPage = new TrelloLoginPage(page);
 
   await loginPage.loginToTrello(LOGIN || "", PASSWORD || "");
-
-  console.log(await page.context().storageState());
+  await page.goto("/");
+  await page.screenshot({ path: `./screenshots/screenshot.png` });
   await page.waitForURL("/");
   await page.context().storageState({ path: authFile });
 });
