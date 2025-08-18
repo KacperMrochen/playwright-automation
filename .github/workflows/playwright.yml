@@ -14,6 +14,8 @@ jobs:
       CI: true
       HEADLESS: true
       URL: ${{ vars.URL }}
+      LOGIN: ${{secrets.TRELLO_LOGIN}}
+      PASSWORD: ${{secrets.TRELLO_PASSWORD}}
       # API_KEY: ${{ secrets.API_KEY }}
 
     steps:
