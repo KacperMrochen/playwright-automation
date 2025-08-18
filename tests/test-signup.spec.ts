@@ -10,7 +10,7 @@ test("Test trello registered credentials signup page", async ({ page }) => {
 
   const signupPage = new TrelloSignupPage(page);
 
-  await signupPage.checkSignupPageHeading();
+  await signupPage.isReady();
   await signupPage.signupToTrello();
 
   // TODO: anti-bot bypass

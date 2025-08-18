@@ -19,7 +19,7 @@ export class TrelloHomePage {
     this.signUpEmail = page.getByPlaceholder("Email");
   }
 
-  async checkHeaderText() {
+  async isReady() {
     await expect(this.gettingStartedHeader).toBeVisible();
   }
 

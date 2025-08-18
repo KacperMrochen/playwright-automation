@@ -11,7 +11,7 @@ export class TrelloWelcomePage {
     });
   }
 
-  async checkPageHeading() {
+  async isReady() {
     await expect(this.heading).toBeVisible();
   }
 }

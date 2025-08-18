@@ -9,7 +9,7 @@ test("Test trello incorrect login", async ({ page }) => {
 
   const loginPage = new TrelloLoginPage(page);
 
-  await loginPage.checkLoginPageHeading();
+  await loginPage.isReady();
   await loginPage.loginToTrello("example@domain.com", "password");
   await loginPage.checkLoginError();
 });

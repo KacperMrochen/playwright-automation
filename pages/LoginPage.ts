@@ -25,7 +25,7 @@ export class TrelloLoginPage {
     );
   }
 
-  async checkLoginPageHeading() {
+  async isReady() {
     await expect(this.heading).toBeVisible({ timeout: 10000 });
   }
 

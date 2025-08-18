@@ -11,12 +11,12 @@ test("Test trello home login link", async ({ page }) => {
 
   const homePage = new TrelloHomePage(page);
 
-  await homePage.checkHeaderText();
+  await homePage.isReady();
   await homePage.clickLoginLink();
 
   const loginPage = new TrelloLoginPage(page);
 
-  await loginPage.checkLoginPageHeading();
+  await loginPage.isReady();
 });
 
 test.use({ storageState: { cookies: [], origins: [] } });
@@ -31,6 +31,6 @@ test("Test trello home sign-up link", async ({ page }) => {
 
   const signupPage = new TrelloSignupPage(page);
 
-  await signupPage.checkSignupPageHeading();
+  await signupPage.isReady();
   await signupPage.checkEmailInputValue();
 });
