@@ -15,6 +15,7 @@ test("Test create new board", async ({ page }) => {
 
   const dashboardPage = new TrelloDashboardPage(page);
 
+  await dashboardPage.isReady();
   await dashboardPage.createNewBoard();
 
   const boardPage = new TrelloBoardPage(page);

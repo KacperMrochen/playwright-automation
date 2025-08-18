@@ -14,8 +14,11 @@ setup("Authenticate user", async ({ page }) => {
   const loginPage = new TrelloLoginPage(page);
 
   await loginPage.loginToTrello(LOGIN || "", PASSWORD || "");
-  await page.goto("/");
-  await page.screenshot({ path: `./screenshots/screenshot.png` });
-  await page.waitForURL("/");
+
+  await page.waitForURL("/u/mrochu/boards");
+  await expect(page.getByText("YOUR WORKSPACES")).toBeVisible({
+    timeout: 10000,
+  });
+
   await page.context().storageState({ path: authFile });
 });
