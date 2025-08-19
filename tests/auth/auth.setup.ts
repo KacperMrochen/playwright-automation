@@ -10,6 +10,8 @@ setup("Authenticate user", async ({ page, loginPage, dashboardPage }) => {
 
   await loginPage.loginToTrello(LOGIN || "", PASSWORD || "");
 
+  console.log(LOGIN || "login", PASSWORD || "password");
+
   await page.waitForURL("/");
   await page.waitForURL("/u/mrochu/boards");
   await dashboardPage.isReady();
