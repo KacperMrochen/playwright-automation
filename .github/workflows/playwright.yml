@@ -37,8 +37,8 @@ jobs:
 
       - name: Run Playwright tests
         run: |
-          npx playwright test tests/auth
-          npx playwright test tests/noauth --no-deps
+          npx playwright test tests/auth/
+          npx playwright test --no-deps tests/noauth/
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
