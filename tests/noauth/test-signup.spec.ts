@@ -2,6 +2,7 @@ import { expect } from "@playwright/test";
 import { test } from "../../fixtures";
 
 test.describe("Testing signup functionality", () => {
+  test.use({ storageState: { cookies: [], origins: [] } });
   test("Test trello registered credentials signup page", async ({
     page,
     loginPage,
