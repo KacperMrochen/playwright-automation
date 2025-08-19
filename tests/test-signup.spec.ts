@@ -1,22 +1,20 @@
-import { test, expect } from "@playwright/test";
-import { TrelloSignupPage } from "../pages/SignupPage";
-// import { TrelloLoginPage } from "../pages/LoginPage";
+import { expect } from "@playwright/test";
+import { test } from "../fixtures";
 
-test.use({ storageState: { cookies: [], origins: [] } });
+test.describe("Testing signup functionality", () => {
+  test("Test trello registered credentials signup page", async ({
+    page,
+    loginPage,
+    signupPage,
+  }) => {
+    await page.goto("/signup");
 
-test("Test trello registered credentials signup page", async ({ page }) => {
-  await page.goto("/signup");
-  console.log(await page.evaluate(() => navigator.userAgent));
+    await signupPage.isReady();
+    await signupPage.signupToTrello();
 
-  const signupPage = new TrelloSignupPage(page);
+    test.skip("Signup bot protection", () => {});
 
-  await signupPage.isReady();
-  await signupPage.signupToTrello();
-
-  // TODO: anti-bot bypass
-
-  // const loginPage = new TrelloLoginPage(page);
-
-  // await loginPage.checkLoginPageHeading();
-  // await loginPage.checkAccountRegisteredMessage();
+    await loginPage.isReady();
+    await loginPage.checkAccountRegisteredMessage();
+  });
 });

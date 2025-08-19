@@ -1,24 +1,16 @@
-import { test } from "@playwright/test";
-import { TrelloDashboardPage } from "../pages/DashboardPage";
-import { TrelloBoardPage } from "../pages/BoardPage";
+import { test } from "../fixtures";
 
-test("Test user dashboard", async ({ page }) => {
+test("Test user dashboard", async ({ page, dashboardPage }) => {
   await page.goto("/u/mrochu/boards");
-
-  const dashboardPage = new TrelloDashboardPage(page);
 
   await dashboardPage.isReady();
 });
 
-test("Test create new board", async ({ page }) => {
+test("Test create new board", async ({ page, dashboardPage, boardPage }) => {
   await page.goto("/u/mrochu/boards");
-
-  const dashboardPage = new TrelloDashboardPage(page);
 
   await dashboardPage.isReady();
   await dashboardPage.createNewBoard();
-
-  const boardPage = new TrelloBoardPage(page);
 
   await boardPage.isReady();
 });

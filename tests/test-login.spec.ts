@@ -1,27 +1,21 @@
-import { test, expect } from "@playwright/test";
-import { TrelloLoginPage } from "../pages/LoginPage";
+import { expect } from "@playwright/test";
+import { test } from "../fixtures";
 
-// do not use authentication storage
-test.use({ storageState: { cookies: [], origins: [] } });
+test.describe("Testing login functionality", () => {
+  test("Test trello incorrect login", async ({ page, loginPage }) => {
+    await page.goto("/login");
 
-test("Test trello incorrect login", async ({ page }) => {
-  await page.goto("/login");
+    await loginPage.isReady();
+    await loginPage.loginToTrello("example@domain.com", "password");
+    await loginPage.checkLoginError();
+  });
 
-  const loginPage = new TrelloLoginPage(page);
+  test("Test trello correct login", async ({ page, loginPage }) => {
+    await page.goto("/login");
 
-  await loginPage.isReady();
-  await loginPage.loginToTrello("example@domain.com", "password");
-  await loginPage.checkLoginError();
-});
-
-test.use({ storageState: { cookies: [], origins: [] } });
-
-test("Test trello correct login", async ({ page }) => {
-  await page.goto("/login");
-
-  const loginPage = new TrelloLoginPage(page);
-  await loginPage.loginToTrello(
-    process.env.LOGIN || "",
-    process.env.PASSWORD || ""
-  );
+    await loginPage.loginToTrello(
+      process.env.LOGIN || "",
+      process.env.PASSWORD || ""
+    );
+  });
 });
