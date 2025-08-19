@@ -32,15 +32,16 @@ export default defineConfig({
       name: "setup",
       testMatch: /.*\.setup\.ts/,
     },
-    // {
-    //   name: "chromium",
-    //   use: { ...devices["Desktop Chrome"] },
-    //   dependencies: ["setup"],
-    // },
     {
       name: "firefox",
       use: { ...devices["Desktop Firefox"], storageState: ".auth/user.json" },
+      testIgnore: ["/tests/test-login.spec.ts", "/tests/test-signup.spec.ts"],
       dependencies: ["setup"],
+    },
+    {
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
+      testMatch: ["/tests/test-login.spec.ts", "/tests/test-signup.spec.ts"],
     },
   ],
 });
