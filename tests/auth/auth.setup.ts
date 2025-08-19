@@ -1,7 +1,7 @@
 import { test as setup, expect } from "@playwright/test";
 import * as fs from "fs";
 import path from "path";
-import { TrelloLoginPage } from "../pages/LoginPage";
+import { TrelloLoginPage } from "../../pages/LoginPage";
 
 const authFile = path.join(__dirname, "../.auth/user.json");
 

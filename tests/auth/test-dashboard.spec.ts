@@ -1,4 +1,4 @@
-import { test } from "../fixtures";
+import { test } from "../../fixtures";
 
 test("Test user dashboard", async ({ page, dashboardPage }) => {
   await page.goto("/u/mrochu/boards");

@@ -36,7 +36,9 @@ jobs:
           echo "URL: $URL"
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: |
+          npx playwright test tests/auth
+          npx playwright test tests/noauth --no-deps
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}

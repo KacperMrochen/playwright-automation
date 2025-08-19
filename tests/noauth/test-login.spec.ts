@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-import { test } from "../fixtures";
+import { test } from "../../fixtures";
 
 test.describe("Testing login functionality", () => {
   test("Test trello incorrect login", async ({ page, loginPage }) => {
