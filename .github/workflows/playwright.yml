@@ -35,8 +35,7 @@ jobs:
 
       - name: Create user.json from secret
         run: |
-          "$TRELLO_PRODUCTION_AUTH" > user.json
-          cat user.json
+          echo "$TRELLO_PRODUCTION_AUTH" > user.json
         shell: bash
 
       - name: Install Playwright Browsers
