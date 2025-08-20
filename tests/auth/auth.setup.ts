@@ -11,12 +11,6 @@ setup("Authenticate user", async ({ page, loginPage, dashboardPage }) => {
 
   await loginPage.loginToTrello(LOGIN || "", PASSWORD || "");
 
-  console.log(process.env.TRELLO_PRODUCTION_AUTH);
-  fs.readFile("user.json", "utf8", function (err, data) {
-    const obj = JSON.parse(data);
-    console.log("The data from the file is: " + obj);
-  });
-
   await page.waitForURL("/");
   await page.waitForURL("/u/mrochu/boards");
   await dashboardPage.isReady();

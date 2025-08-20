@@ -30,9 +30,7 @@ export default defineConfig({
       name: "firefox",
       use: {
         ...devices["Desktop Firefox"],
-        storageState: !!process.env.CI
-          ? process.env.TRELLO_PRODUCTION_AUTH
-          : ".auth/user.json",
+        storageState: process.env.CI ? "user.json" : ".auth/user.json",
       },
       dependencies: ["setup"],
     },

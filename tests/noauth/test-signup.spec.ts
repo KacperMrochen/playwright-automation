@@ -13,8 +13,8 @@ test.describe("Testing signup functionality", () => {
     await signupPage.isReady();
     await signupPage.signupToTrello();
 
-    test.skip("Signup bot protection", () => {});
-
+    // Signup anti-bot protection
+    test.skip();
     await loginPage.isReady();
     await loginPage.checkAccountRegisteredMessage();
   });
