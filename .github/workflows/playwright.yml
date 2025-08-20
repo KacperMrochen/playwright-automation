@@ -34,9 +34,11 @@ jobs:
           echo "URL: $URL"
 
       - name: Create user.json from secret
-        run: |
-          echo "$TRELLO_PRODUCTION_AUTH" > user.json
+        run: echo "$TRELLO_PRODUCTION_AUTH" > user.json
         shell: bash
+
+      - name: List folder files
+        run: ls
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
