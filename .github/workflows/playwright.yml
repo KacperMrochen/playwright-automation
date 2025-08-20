@@ -28,17 +28,23 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-
       - name: debug variables
         run: |
           echo "URL: $URL"
 
+      - name: Create user.json from secret
+        run: echo "$TRELLO_PRODUCTION_AUTH" > user.json
+        shell: bash
+        env:
+          TRELLO_PRODUCTION_AUTH: ${{ secrets.TRELLO_PRODUCTION_AUTH }}
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
       - name: Run Playwright tests
         run: |
-          npx playwright test tests/auth/*spec.ts
-          npx playwright test --no-deps tests/noauth/*spec.ts
+          npx playwright test tests/auth/*.spec.ts
+          npx playwright test --no-deps tests/noauth/*.spec.ts
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}

@@ -28,7 +28,10 @@ export default defineConfig({
     },
     {
       name: "firefox",
-      use: { ...devices["Desktop Firefox"], storageState: ".auth/user.json" },
+      use: {
+        ...devices["Desktop Firefox"],
+        storageState: !!process.env.CI ? "user.json" : ".auth/user.json",
+      },
       dependencies: ["setup"],
     },
   ],

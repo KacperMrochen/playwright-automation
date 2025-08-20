@@ -1,7 +1,8 @@
 import { test as setup } from "../../fixtures";
 import path from "path";
 
-const authFile = path.join(__dirname, "../../.auth/user.json");
+const localAuthFile = path.join(__dirname, "../../.auth/user.json");
+const ciAuthFile = path.join(__dirname, "user.json");
 
 const { LOGIN, PASSWORD } = process.env;
 
@@ -10,11 +11,11 @@ setup("Authenticate user", async ({ page, loginPage, dashboardPage }) => {
 
   await loginPage.loginToTrello(LOGIN || "", PASSWORD || "");
 
-  console.log(LOGIN || "login", PASSWORD || "password");
-
   await page.waitForURL("/");
   await page.waitForURL("/u/mrochu/boards");
   await dashboardPage.isReady();
 
-  await page.context().storageState({ path: authFile });
+  await page.context().storageState({
+    path: !!process.env.CI ? ciAuthFile : localAuthFile,
+  });
 });
