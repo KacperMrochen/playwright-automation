@@ -16,6 +16,6 @@ setup("Authenticate user", async ({ page, loginPage, dashboardPage }) => {
   await dashboardPage.isReady();
 
   await page.context().storageState({
-    path: !!process.env.CI ? process.env.TRELLO_PRODUCTION_AUTH : localAuthFile,
+    path: !!process.env.CI ? "./user.json" : localAuthFile,
   });
 });
