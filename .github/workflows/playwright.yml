@@ -16,6 +16,7 @@ jobs:
       URL: ${{ vars.URL }}
       LOGIN: ${{ secrets.TRELLO_LOGIN }}
       PASSWORD: ${{ secrets.TRELLO_PASSWORD }}
+      TRELLO_PRODUCTION_AUTH: ${{ secrets.TRELLO_PRODUCTION_AUTH }}
       # API_KEY: ${{ secrets.API_KEY }}
 
     steps:
@@ -33,10 +34,10 @@ jobs:
           echo "URL: $URL"
 
       - name: Create user.json from secret
-        run: echo "$TRELLO_PRODUCTION_AUTH" > user.json
+        run: |
+          echo "$TRELLO_PRODUCTION_AUTH" > user.json
+          echo user.json
         shell: bash
-        env:
-          TRELLO_PRODUCTION_AUTH: ${{ secrets.TRELLO_PRODUCTION_AUTH }}
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
