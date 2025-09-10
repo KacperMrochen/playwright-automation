@@ -21,8 +21,8 @@ export class TrelloSignupPage {
     await expect(this.emailInput).toHaveValue("example@domain.com");
   }
 
-  async signupToTrello() {
-    await this.emailInput.fill("example@domain.com");
+  async signupToTrello(login: string) {
+    await this.emailInput.fill(login);
     await this.submitButton.click();
   }
 }
