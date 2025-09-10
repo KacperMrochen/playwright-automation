@@ -4,10 +4,12 @@ import { TrelloSignupPage } from "./pages/SignupPage";
 import { TrelloHomePage } from "./pages/HomePage";
 import { TrelloDashboardPage } from "./pages/DashboardPage";
 import { TrelloBoardPage } from "./pages/BoardPage";
+import { TrelloWelcomePage } from "./pages/WelcomePage";
 
 export type TestOptions = {
   loginPage: TrelloLoginPage;
   signupPage: TrelloSignupPage;
+  welcomePage: TrelloWelcomePage;
   homePage: TrelloHomePage;
   dashboardPage: TrelloDashboardPage;
   boardPage: TrelloBoardPage;
@@ -21,6 +23,10 @@ export const test = base.extend<TestOptions>({
   signupPage: async ({ page }, use) => {
     const signuppage = new TrelloSignupPage(page);
     await use(signuppage);
+  },
+  welcomePage: async ({ page }, use) => {
+    const welcomePage = new TrelloWelcomePage(page);
+    await use(welcomePage);
   },
   homePage: async ({ page }, use) => {
     const homepage = new TrelloHomePage(page);
