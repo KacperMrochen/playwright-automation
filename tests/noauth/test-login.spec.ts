@@ -3,7 +3,7 @@ import { test } from "../../fixtures";
 
 test.describe("Testing login functionality", () => {
   test.use({ storageState: { cookies: [], origins: [] } });
-  test("Test trello incorrect login", async ({ page, loginPage }) => {
+  test("Should not log-in user", async ({ page, loginPage }) => {
     await page.goto("/login");
 
     await loginPage.isReady();
@@ -11,7 +11,7 @@ test.describe("Testing login functionality", () => {
     await loginPage.checkLoginError();
   });
 
-  test("Test trello correct login", async ({ page, loginPage }) => {
+  test("Should log-in user correctly", async ({ page, loginPage }) => {
     await page.goto("/login");
 
     await loginPage.loginToTrello(
